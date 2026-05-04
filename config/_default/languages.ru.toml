@@ -17,7 +17,7 @@ title = "Кирилл Белоусов"
 [params.author]
   name = "Кирилл Белоусов"
   email = "cyrmax@internet.ru"
-#   image = "img/blowfish_logo.png"
+  image = "img/avatar.png"
 #   imageQuality = 96
   headline = "Разработчик · тестировщик · DevOps · специалист по цифровой доступности"
   bio = "Также известен как cyrmax. Пишу код, тестирую, автоматизирую инфраструктуру и помогаю делать цифровые продукты доступнее."
