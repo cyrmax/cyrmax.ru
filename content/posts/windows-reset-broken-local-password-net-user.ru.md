@@ -117,8 +117,8 @@ net user username password
 
 Где:
 
-* `username` - ваше имя пользователя;
-* `password` - новый пароль.
+- `username` - ваше имя пользователя;
+- `password` - новый пароль.
 
 Например:
 

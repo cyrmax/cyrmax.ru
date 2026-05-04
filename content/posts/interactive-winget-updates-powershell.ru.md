@@ -142,21 +142,21 @@ foreach ($pkg in $packagesToUpgrade) {
 
 1. Установить модуль для работы с WinGet:
 
-```powershell
-Install-Module -Name 'Microsoft.WinGet.Client'
-```
+    ```powershell
+    Install-Module -Name 'Microsoft.WinGet.Client'
+    ```
 
 2. Сохранить скрипт, например в файл:
 
-```text
-Update-WinGetPackages.ps1
-```
+    ```text
+    Update-WinGetPackages.ps1
+    ```
 
 3. Запустить его в PowerShell 7:
 
-```powershell
-.\Update-WinGetPackages.ps1
-```
+    ```powershell
+    .\Update-WinGetPackages.ps1
+    ```
 
 4. Для каждого найденного обновления выбрать нужное действие.
 
