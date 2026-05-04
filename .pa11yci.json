@@ -1,0 +1,16 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
+  },
+  "urls": [
+    "http://127.0.0.1:1313/",
+    "http://127.0.0.1:1313/contacts/",
+    "http://127.0.0.1:1313/license/",
+    "http://127.0.0.1:1313/posts/",
+    "http://127.0.0.1:1313/projects/"
+  ]
+}

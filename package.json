@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "build": "hugo --gc --minify",
+    "build:strict": "hugo --gc --minify --panicOnWarning",
+    "build:check": "hugo --gc --destination public-check",
+    "check:html": "npm run build:check && npm run lint:html",
+    "lint:md": "markdownlint-cli2 \"content/**/*.md\" \"README.md\"",
+    "lint:md:fix": "markdownlint-cli2 --fix \"content/**/*.md\" \"README.md\"",
+    "lint:html": "html-validate \"public-check/**/*.html\"",
+    "serve:public": "http-server public -p 1313",
+    "lint:a11y": "start-server-and-test serve:public http://127.0.0.1:1313 pa11y-ci",
+    "check": "npm run lint:md && npm run build && npm run lint:html",
+    "watch": "hugo server -D -E -F --cleanDestinationDir --disableFastRender -O -p 21313"
+  },
+  "devDependencies": {
+    "html-validate": "^10.15.0",
+    "markdownlint-cli2": "^0.22.1",
+    "pa11y-ci": "^4.1.0",
+    "start-server-and-test": "^3.0.2"
+  }
+}
