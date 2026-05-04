@@ -1,5 +1,6 @@
 # Hugo build output
 /public/
+/public-check/
 /resources/_gen/
 
 # Hugo cache / generated files

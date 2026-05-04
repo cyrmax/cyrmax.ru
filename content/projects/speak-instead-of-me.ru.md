@@ -4,7 +4,7 @@ date: 2025-07-16
 lastmod: 2026-05-04
 description: "Небольшая программа, которая позволяет говорить любым SAPI-синтезатором речи в выбранное звуковое устройство."
 tags: ["windows",  "софт", "сделал-сам"]
-externalUrl: "https://github.com/cyrmax/sim"
+#externalUrl: "https://github.com/cyrmax/sim"
 ---
 
 Speak Instead of Me - небольшая программа, которая позволяет "разговаривать" любым SAPI-синтезатором речи в выбранное звуковое устройство.
