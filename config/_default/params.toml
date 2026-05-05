@@ -188,3 +188,10 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [advertisement]
   # adsense = ""
+
+[buildInfo]
+  commit = "local"
+  shortCommit = "local"
+  branch = "local"
+  runNumber = "local"
+ 

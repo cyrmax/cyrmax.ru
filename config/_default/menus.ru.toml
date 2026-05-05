@@ -30,6 +30,11 @@
  pageRef = "contacts"
  weight = 40
 
+[[main]]
+ name = "О сайте"
+ pageRef = "site"
+ weight = 50
+
 #[[main]]
 #  name = "example sub-menu 1"
 #  parent = "Parent"

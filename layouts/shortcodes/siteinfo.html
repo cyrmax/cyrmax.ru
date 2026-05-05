@@ -1,0 +1,50 @@
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $projects := where site.RegularPages "Section" "projects" -}}
+{{- $build := site.Params.buildInfo -}}
+
+<table>
+  <tbody>
+    <tr>
+      <th scope="row">Генератор</th>
+      <td>Hugo {{ hugo.Version }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Окружение</th>
+      <td>{{ hugo.Environment }}</td>
+    </tr>
+    {{- with site.Data.build }}
+    <tr>
+      <th scope="row">Дата сборки</th>
+      <td>{{ .time }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Ветка</th>
+      <td>{{ .branch }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Commit</th>
+      <td><code>{{ .shortCommit }}</code></td>
+    </tr>
+    <tr>
+      <th scope="row">Номер сборки</th>
+      <td>{{ .runNumber }}</td>
+    </tr>
+    {{- end }}
+    <tr>
+      <th scope="row">Страниц</th>
+      <td>{{ len site.RegularPages }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Статей</th>
+      <td>{{ len $posts }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Проектов</th>
+      <td>{{ len $projects }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Тегов</th>
+      <td>{{ len site.Taxonomies.tags }}</td>
+    </tr>
+  </tbody>
+</table>
