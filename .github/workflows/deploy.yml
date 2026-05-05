@@ -1,0 +1,95 @@
+name: Build, check and deploy
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-cyrmax-ru
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build-check-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+      url: https://cyrmax.ru
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.161.0"
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Lint Markdown
+        run: npm run lint:md
+
+      - name: Build unminified site for checks
+        run: npm run build:check
+
+      - name: Validate generated HTML
+        continue-on-error: true
+        run: npm run lint:html
+
+      - name: Run accessibility checks
+        continue-on-error: true
+        run: npm run lint:a11y
+
+      - name: Build production site
+        run: npm run build
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      - name: Deploy with rsync
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rsync -az --delete \
+            --checksum \
+            --delay-updates \
+            --human-readable \
+            --itemize-changes \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            public/ \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/"
+
+      - name: Cleanup SSH key
+        if: always()
+        shell: bash
+        run: |
+          rm -f ~/.ssh/deploy_key

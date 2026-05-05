@@ -9,7 +9,7 @@
     "lint:html": "html-validate \"public-check/**/*.html\"",
     "serve:public": "http-server public -p 1313",
     "lint:a11y": "start-server-and-test serve:public http://127.0.0.1:1313 pa11y-ci",
-    "check": "npm run lint:md && npm run build && npm run lint:html",
+    "check": "npm run lint:md && npm run build:check && npm run lint:html",
     "watch": "hugo server -D -E -F --cleanDestinationDir --disableFastRender -O -p 21313"
   },
   "devDependencies": {
