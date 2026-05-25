@@ -325,7 +325,7 @@ PowerShell работает с объектами, и было бы упущен
 
 Например команда `ls -Recurse -File | measure Length -Sum -Average -Minimum -Maximum -StandardDeviation`, запущенная в корне моего Dev Drive, очень долго думала и показала такой вывод:
 
-```
+```text
 Count             : 328156
 Average           : 109012,413608162
 Sum               : 35773077600
@@ -457,7 +457,7 @@ csv можно не только экспортировать, но и импо�
 
 Это не полноценный .env парсер, но файл с содержимым вида
 
-```
+```text
 firstName=Kirill
 lastName=Belousov
 role=developer
