@@ -1,7 +1,7 @@
 ---
 title: "Шпаргалка по командам PowerShell"
 date: 2026-05-25
-lastmod: 2026-05-25
+lastmod: 2026-05-26
 description: "Список часто используемых команд PowerShell вместе с их эквивалентами для Bash"
 tags: ["windows", "powershell", "администрирование"]
 draft: false
