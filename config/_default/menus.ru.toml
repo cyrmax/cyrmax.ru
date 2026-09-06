@@ -11,8 +11,8 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
-name = "Проекты"
-pageRef = "projects"
+name = "Приложения и проекты"
+pageRef = "apps"
 weight = 10
 
 [[main]]
